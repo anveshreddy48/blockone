@@ -1,21 +1,25 @@
+
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-// const { fetch } = require('node-fetch');
+
+import { EosService } from './services/eos.service';
+import { GetBlockComponent } from './components/get-block/get-block.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GetBlockComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-   //  fetch
+    AppRoutingModule
   ],
-  providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [EosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

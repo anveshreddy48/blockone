@@ -1,0 +1,22 @@
+<div class="btn-wrapper">
+    Refresh results: <button class="refresh-button btn btn-dark btn-md" (click)="refreshResults()">LOAD</button>
+</div>
+<div class="blocks-table" *ngIf="!this.eos.isRequestInProgress">
+  <div class="row blocks-header">
+    <div class="col-md-6 headers">Block id</div>
+    <div class="col-md-4 headers">Timestamp</div>
+    <div class="col-md-2 headers">Count</div>
+  </div>
+  <div class="blocks-body" *ngFor="let list of this.eos.blockList; let i = index">
+    <div (click)="list.open = !list.open" class="row">
+      <div class="col-md-6"><a class="color-block-id">{{list.id}}</a></div>
+      <div class="col-md-4">{{list.timestamp | date: 'long'}}</div>
+      <div class="col-md-2">{{list.actionCount}}</div>
+    </div>
+    <div *ngIf="list.open === true" class="row">
+
+      <div class="col-md-12 format-json"><pre>{{ list | json: 4 }}</pre></div>
+    </div>
+  </div>
+</div>
+<div *ngIf="this.eos.isRequestInProgress" class="spinner"></div>
