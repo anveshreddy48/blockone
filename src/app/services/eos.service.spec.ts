@@ -39,9 +39,9 @@ describe('EosService', () => {
   });
 
   it('retrieve the block information', () => {
-    return new Promise((resolve => {
+    // return new Promise((resolve => {
 
-    });
+    // });
   });
 
 });
